@@ -170,7 +170,6 @@ def map(fn):
         function : A function that takes a list, applies `fn` to each element, and returns a
         new list
     """
-    # TODO: Implement for Task 0.3.
     def apply(ls):
         arr = []
         for i in ls:
@@ -182,7 +181,6 @@ def map(fn):
 
 def negList(ls):
     "Use :func:`map` and :func:`neg` to negate each element in `ls`"
-    # TODO: Implement for Task 0.3.
     return map(neg)(ls)
 
 
@@ -214,7 +212,6 @@ def zipWith(fn):
 
 def addLists(ls1, ls2):
     "Add the elements of `ls1` and `ls2` using :func:`zipWith` and :func:`add`"
-    # TODO: Implement for Task 0.3.
     return zipWith(add)(ls1, ls2)
 
 
@@ -247,7 +244,6 @@ def reduce(fn, start):
 
 def sum(ls):
     "Sum up a list using :func:`reduce` and :func:`add`."
-    # TODO: Implement for Task 0.3.
     return reduce(add, 0)(ls)
 
 

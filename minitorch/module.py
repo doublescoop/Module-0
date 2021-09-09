@@ -14,6 +14,7 @@ class Module:
         self._modules = {}
         self._parameters = {}
         self.training = True
+        
 
     def modules(self):
         "Return the direct child modules of this module."
@@ -43,21 +44,46 @@ class Module:
         Returns:
             list of pairs: Contains the name and :class:`Parameter` of each ancestor parameter.
         """
-        def np(params, module, prefix=""):
+        
+        np = []
+        for x in self.__dict__["_parameters"]:
+            np.append((x, self.__dict__["_parameters"][x]))
+            
+        for x in self.__dict__["_modules"]:
+            sub = self.__dict__["_modules"].named_parameters()
+            for mod in sub:
+                np.append((x + "." + mod[0],mod[1]))
+        return np
+    
+    
+    
+        
+#         np = []
+#         for x in self.__dict__["_parameters"]:
+#             np.append((x, self.__dict__["_parameters"][x]))
+            
+#         for x in self.__dict__["_modules"]:
+#             sub = self.__dict__["_modules"][x].named_parameters()
+#             for mod in sub:
+#                 np.append((x + "." + mod[0],mod[1]))
+#         return np
+        
+        
+#         def np(params, module, prefix=""):
 
-            temp = {}
+#             temp = {}
 
-            for k, v in module._parameters.items():
-                temp[prefix + k] = v
+#             for k, v in module._parameters.items():
+#                 temp[prefix + k] = v
 
-            params.update(temp)
+#             params.update(temp)
 
-            for k, m in module._modules.items():
-                np(params, m, prefix + k + ".")
+#             for k, m in module._modules.items():
+#                 np(params, m, prefix + k + ".")
 
-        params = self._parameters
-        np(params, self)
-        return params
+#         params = self._parameters
+#         np(params, self)
+#         return params
     
     
         
