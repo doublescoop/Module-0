@@ -50,24 +50,12 @@ class Module:
             np.append((x, self.__dict__["_parameters"][x]))
             
         for x in self.__dict__["_modules"]:
-            sub = self.__dict__["_modules"].named_parameters()
+            sub = self.__dict__["_modules"][x].named_parameters()
             for mod in sub:
                 np.append((x + "." + mod[0],mod[1]))
         return np
     
     
-    
-        
-#         np = []
-#         for x in self.__dict__["_parameters"]:
-#             np.append((x, self.__dict__["_parameters"][x]))
-            
-#         for x in self.__dict__["_modules"]:
-#             sub = self.__dict__["_modules"][x].named_parameters()
-#             for mod in sub:
-#                 np.append((x + "." + mod[0],mod[1]))
-#         return np
-        
         
 #         def np(params, module, prefix=""):
 
